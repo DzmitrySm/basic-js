@@ -32,9 +32,8 @@ function transform(arr) {
           console.log(arr1)
           }if(arr[i] === '--discard-prev' && arr[i - 1]) {
             arr1.pop()
-   } else {
-     break
-   }}
+   } 
+   }
 
     return arr1
   }
