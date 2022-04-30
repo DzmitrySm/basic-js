@@ -13,30 +13,43 @@ const { NotImplementedError } = require('../extensions/index.js');
  * transform([1, 2, 3, '--discard-prev', 4, 5]) => [1, 2, 4, 5]
  * 
  */
-function transform(arr) {
-  if (!Array.isArray(arr)) {
-    throw Error("'arr' parameter must be an instance of the Array!")
+ transform 
+ function transform(arr) {
+   if (!Array.isArray(arr)) {
+     throw Error("'arr' parameter must be an instance of the Array!")
+   }
+  if (arr.length === 0) {
+    return []
   }
- if (arr.length === 0) {
-   return []
- }
-  let arr1 = []
-  for(let i = 0; i < arr.length; i++) {
-    arr1.push(arr[i])
-    if(arr[i] === '--double-next' && arr[i + 1] ) {
-      arr1.push(arr[i + 1])
-      }if(arr[i] === '--double-prev' && arr[i - 1] ) {
-        arr1.push(arr[i - 1])
-        }if(arr[i] === '--discard-next' && arr[i + 1] ) {
-          arr1.pop()
-          console.log(arr1)
-          }if(arr[i] === '--discard-prev' && arr[i - 1]) {
-            arr1.pop()
-   } 
+   let arr1 = []
+   for(let i = 0; i < arr.length; i++) {
+     if ( arr[i] !== '--double-next' && arr[i] !== '--discard-next'  && arr[i] !== '--double-prev' && arr[i] !== '--discard-prev') {
+       arr1.push(arr[i])
+     }
+     if(arr[i] === '--discard-next' && arr[i + 2] === '--discard-prev') {
+       break
+     }
+     if (arr[i] === '--double-prev' && arr[i - 2] === '--discard-next') {
+      break
+     }
+     if (arr[i] === '--double-next' && arr[i + 1] !== undefined) {
+       arr1.push(arr[i + 1])
+     }
+     if (arr[i] === '--double-prev' && arr[i - 1] !== undefined) {
+      arr1.push(arr[i - 1])
+    }
+   if (arr[i] === '--discard-next') {
+      i++
+    }
+    if (arr[i] === '--discard-prev') {
+    
+      arr1.pop()
+    } 
+  }
+ 
+     return arr1.filter(el => el !== '--double-next' && el !== '--discard-next'  && el !== '--double-prev' && el !== '--discard-prev')
    }
 
-    return arr1
-  }
  
 
 
