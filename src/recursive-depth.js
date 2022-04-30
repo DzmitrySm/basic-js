@@ -14,24 +14,32 @@ const { NotImplementedError } = require('../extensions/index.js');
  */
 class DepthCalculator {
   calculateDepth(arr) {
+  let count = 1
   let modifyArr = JSON.stringify(arr)
   let destArr = Array.from(modifyArr)
-  let filterArr = destArr.filter(el => el === "[")
-  let filterARr2 = destArr.filter(el => el === "]")
+  let filterArr = destArr.filter(el => el === "[" || el === "]")
+  let string = filterArr.join("")
+  while (string.length !== 0) {
+    string = string.replace(/\[\]/g, "")
+    count = count + 1
+  }
+  return count - 1
+  
   //console.log(destArr)
   //console.log(filterARr2)
  // return Math.min((filterArr.length + 1), (filterARr2.length + 1))
-  let count = 1
-  for (let i = 0; i < arr.length; i++) {
-    if (Array.isArray(arr[i])) {
-      arr[i] = arr[i].flat()
-      count = count + 1
-    }
-    return count
+  //let count = 1
+ // for (let i = 0; i < arr.length; i++) {
+   // if (Array.isArray(arr[i])) {
+    //  arr[i] = arr[i].flat()
+   //   count = count + 1
+   // }
+  //  return count
     
-  }
+ // }
 }
 }
+
 
 
 
