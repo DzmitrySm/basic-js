@@ -11,12 +11,14 @@ const { NotImplementedError } = require('../extensions/index.js');
  * @example
  * 
  * repeater('STRING', { repeatTimes: 3, separator: '**', 
- * addition: 'PLUS', additionRepeatTimes: 3, additionSeparator: '00' })
+ * addition: 'PLUS', : 3, additionSeparator: '00' })
  * => 'STRINGPLUS00PLUS00PLUS**STRINGPLUS00PLUS00PLUS**STRINGPLUS00PLUS00PLUS'
  *
  */
 function repeater(str, options) {
+
   return str.repeat(options.repeatTimes).split(`${options.addition}`)
+  
 }
 
 module.exports = {
