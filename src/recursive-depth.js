@@ -23,14 +23,11 @@ class DepthCalculator {
   while (string.length !== 0) {
     string = string.replace(/\[\]/g, "")
     count = count + 1
-    if (Array.isArray(string[i])) {
-      while(Array.isArray(string[i])) {
-        count = count + 1 
-        string[i].flat()
       }
-    }
+      return count
   }
-  return count
+}
+  
   
   //console.log(destArr)
   //console.log(filterARr2)
@@ -44,8 +41,8 @@ class DepthCalculator {
   //  return count
     
  // }
-}
-}
+
+
 
 
 
