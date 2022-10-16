@@ -27,14 +27,18 @@ function repeater(str, options) {
   if(options.repeatTimes > 1 && options.separator && !options.addition) {
     newArr.push(str, options.separator)
  }
- if(options.repeatTimes > 1 && options.separator && options.addition && options.additionRepeatTimes) {
+ if(options.repeatTimes > 1 && options.separator && options.addition && options.additionRepeatTimes && !options.additionSeparator) {
   newArr.push(str, options.addition, options.separator)
   }
+  if (!options.repeatTimes && !options.additionRepeatTimes) {
+    newArr.push(str, options.addition)
+  }
+  if(options.repeatTimes > 1 && options.separator && options.additionSeparator && options.addition) {
+    newArr.push(str, (options.addition+options.additionSeparator).repeat(options.additionRepeatTimes - 1), options.addition, options.separator)
+ }
   }
   
   return newArr.slice(0, newArr.length - 1).join('')
-  
-  
   
 }
 
