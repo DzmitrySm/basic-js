@@ -54,7 +54,7 @@ function repeater(str, options) {
   newArr.push(str, (options.addition+options.additionSeparator).repeat(options.additionRepeatTimes - 1), options.addition, options.separator)
 }
 if(options.repeatTimes > 1 && options.separator && options.additionSeparator && options.addition === null && str === null) {
-  newArr.push(str, (options.addition+options.additionSeparator).repeat(options.additionRepeatTimes - 1), options.addition, options.separator)
+  newArr.push(str + (options.addition+options.additionSeparator).repeat(options.additionRepeatTimes - 1) + options.addition, options.separator)
 }
   }
   if (options.separator && options.additionSeparator && options.addition && !options.repeatTimes) {
