@@ -44,6 +44,9 @@ function repeater(str, options) {
   if (!options.repeatTimes && !options.additionRepeatTimes) {
     newArr.push(str, options.addition)
   }
+  if(options.repeatTimes === 1 && options.separator && options.additionSeparator && options.addition) {
+    newArr.push(str, (options.addition+options.additionSeparator).repeat(options.additionRepeatTimes - 1), options.addition, options.separator)
+ }
   if(options.repeatTimes > 1 && options.separator && options.additionSeparator && options.addition) {
     newArr.push(str, (options.addition+options.additionSeparator).repeat(options.additionRepeatTimes - 1), options.addition, options.separator)
  }
