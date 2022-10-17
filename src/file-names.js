@@ -18,12 +18,14 @@ const { NotImplementedError } = require('../extensions/index.js');
 function renameFiles(names) {
   let myMap = new Map()
   for (let i = 0; i < names.length; i++) {
-    if (myMap.has(names[i]) === false) {
+    if (!myMap.has(names[i])) {
       myMap.set(names[i])
     }else {
-      myMap.set(names[i] + /(1)/)
+      myMap.set(names[i] + 1)
     }
-  }return Object.keys(myMap)
+
+  }console.log(myMap)
+  return Object.keys(myMap)
 
 }
 

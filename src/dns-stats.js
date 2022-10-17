@@ -26,8 +26,27 @@ function getDNSStats(domains) {
   if (domains.length === 0) {
     return {}
   }
-  let reverseArr = domains.map(x => x.split("").reverse().join(""))
+  let count = 0
+  let key = ''
+  let myMap = new Map()
+  let reverseArr = domains.map(x => x.split(".").reverse())
+  for (let i = 0; i < reverseArr.length; i++ ) {
+    for(let j = 0; j < reverseArr[i].length; j++) {
+      if (!myMap.has(`.${reverseArr[i][j]}`)) {
+        key = key + `.${reverseArr[i][j]}`
+        count = 1
+        myMap.set(key, count)
+        
+      }
+      else {
+        myMap.set(`.${reverseArr[i][j]}`, myMap.get(`.${reverseArr[i][j]}`) + 1)
+        key =''
+      }
+    }
+  }
   console.log(reverseArr)
+  console.log(myMap) 
+  return Object.fromEntries(myMap)
   
 }
 

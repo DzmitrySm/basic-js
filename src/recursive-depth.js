@@ -12,7 +12,7 @@ const { NotImplementedError } = require('../extensions/index.js');
  * depthCalc.calculateDepth([[[]]]) => 3
  *
  */
-class DepthCalculator {
+ class DepthCalculator {
   calculateDepth(arr) {
   let count = 0
   let modifyArr = JSON.stringify(arr)
